@@ -1,9 +1,14 @@
+using System.Collections.Generic;
+
 namespace StockBot.Model
 {
     public class WorkerOptions
     {
         public YahooFinanceApi YahooFinanceApi { get; set; }
         public TwitterApi TwitterApi { get; set; }
+        public int StartingHour { get; set; }
+        public int FinalHour { get; set; }
+        public List<string> Symbols { get; set; }
     }
 
     public class YahooFinanceApi

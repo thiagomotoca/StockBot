@@ -18,9 +18,9 @@ namespace StockBot.Services
             _client.DefaultRequestHeaders.Add("x-rapidapi-host", workerOptions.YahooFinanceApi.ApiHost);
         }
 
-        public async Task<QuoteResponseDto> GetQuotes(string symbol)
+        public async Task<QuoteResponseDto> GetQuotes(string symbols)
         {
-            var response = await _client.GetAsync($"market/v2/get-quotes?symbols={symbol}&region=BR");
+            var response = await _client.GetAsync($"market/v2/get-quotes?symbols={symbols}&region=BR");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsAsync<QuoteResponseDto>();
             return result;

@@ -20,11 +20,14 @@ namespace StockBot
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddMemoryCache();
+
                     IConfiguration configuration = hostContext.Configuration;
                     var workerOptions = configuration.GetSection("WorkerOptions").Get<WorkerOptions>();
                     services.AddSingleton(workerOptions);
 
                     services.AddTransient<IYahooService, YahooService>();
+                    services.AddTransient<ITwitterService, TwitterService>();
                     
                     services.AddQuartz(q =>  
                     {

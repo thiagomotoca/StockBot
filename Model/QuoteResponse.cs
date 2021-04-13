@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace StockBot.Model
 {
     public class QuoteResponseDto
@@ -7,11 +9,13 @@ namespace StockBot.Model
 
     public class QuoteResponse
     {
-        public Result[] Result { get; set; }
+        public List<Result> Result { get; set; }
     }
 
     public class Result
     {
+        public string Symbol { get; set; }
         public decimal RegularMarketPrice { get; set; }
+        public decimal RegularMarketPreviousClose { get; set; }
     }
 }

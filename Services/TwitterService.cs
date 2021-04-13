@@ -111,7 +111,7 @@ namespace StockBot.Services
             var authHeader = GenerateAuthorizationHeader(message);
             var postBody = "status=" + Uri.EscapeDataString(message);
 
-            var request = (HttpWebRequest)WebRequest.Create(oAuthUrl);
+            var request = (HttpWebRequest)WebRequest.Create($"{oAuthUrl}statuses/update.json");
             request.Headers.Add("Authorization", authHeader);
             request.Method = "POST";
             request.UserAgent = "OAuth gem v0.4.4";
